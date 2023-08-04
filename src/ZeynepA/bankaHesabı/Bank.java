@@ -60,7 +60,6 @@ public class Bank extends Account {
 
     }
 
-
     static void hesapListele() {
 
         System.out.println("Hesap Listesi = " + customerAccounts);

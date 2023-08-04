@@ -84,12 +84,8 @@ public class Account extends Customer{
             bakiye-=cekılecekPara;
             setBakiye(bakiye);
             System.out.println("Para çekme işlemi başarılı. Güncel bakiye: " + bakiye);
-
         }
-
-
       }
-
 
     public double mevduatFaiziHesapla(double faizOrani, int mevduatSuresi){
         double bakiye=getBakiye();
@@ -105,7 +101,6 @@ public class Account extends Customer{
 
         return   aylıkOdeme * krediSuresi;
     }
-
 
     public void setHesapNumarasi (int partLength) {
 
@@ -163,7 +158,6 @@ public class Account extends Customer{
 
      }
 
-
     public String getHesapNumarasi() {
         return hesapNumarasi;
     }
@@ -183,6 +177,5 @@ public class Account extends Customer{
                 ", bakiye=" + bakiye +
                 '}';
     }
-
 
 }

@@ -29,5 +29,4 @@ public class Customer {
     public int getCustomerNumber() {
         return customerNumber;
     }
-
 }

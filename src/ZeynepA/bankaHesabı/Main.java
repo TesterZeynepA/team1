@@ -22,7 +22,6 @@ public class Main extends Bank {
             assert account != null;
             musteriIslemleri(account);
 
-
         } else if (secimAnaMenu == 2) {
 
             bankaIslemleri();
@@ -34,7 +33,6 @@ public class Main extends Bank {
     static void musteriIslemleri(Account account) {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n Buddy Bank Müşteri İşlemlerine Hoşgeldiniz\n" +
                 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
-
 
         System.out.println("Değerli müşterimiz, Lütfen işleminizi seçiniz: \nBakiye Sorgulama 1 \nPara Yatırma 2 \n" +
                 "Para Çekme 3 \nKredi Çekme 4 \nHesaplarımı Listele 5 \nYeni Hesap Açma 6 \n Hesap Kapatma 7 \nAna Menü 8" +
