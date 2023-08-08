@@ -36,7 +36,7 @@ public class Main {
         System.out.println("Lütfen yapmak istediğiniz işlemi seçiniz = " + "\n1-Öğrenci Kaydı oluşturma \n2-kitapOduncAl " +
                 "\n3-kitapIadeEt \n4-kitaplarimiListele \n5-Kütühanede Kitap ara\n6-AnaMenu  \n0-Çıkış");
 
-        switch (input.nextInt()) {
+        switch (new Scanner(System.in).nextInt()) {
             case 1:
                 ogrenciKaydi();// Zeynep
                 ogrenciMenu();
