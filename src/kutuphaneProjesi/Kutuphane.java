@@ -2,6 +2,7 @@ package kutuphaneProjesi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static kutuphaneProjesi.Main.*;
 import static kutuphaneProjesi.Ogrenci.kitapIadeTarihi;
@@ -22,17 +23,15 @@ public class Kutuphane extends Kitap {
     }
 
     static List<Kitap> silinecekKitaplar = new ArrayList<>();
-    static Kitap odunc = null;
+    static Kitap istenenKitap = null;
 
     public static void kutuphaneMenu() {//Zerrin
-
-        String tercih = "";
 
         System.out.println("**********KUTUPHANEMİMİZE  HOŞGELDİNİZ**********\n" + "\t" +
                 "1- Kitap Ekle\n" + "\t"
                 + "2- Kitap Sil\n" + "\t" + "3- Kitap Listele\n" + "\t" +
-                "4- Kitap Ara\n" + "\t" + "5- Ana Menu\n" + "\t" + "6- Cıkıs");
-        tercih = input.nextLine();
+                "4- Kitap Ara\n" + "\t" + "5- Ana Menu\n" + "\t" + "0- Cıkıs");
+        String tercih = input.nextLine();
         switch (tercih) {
             case "1":
                 kitapEkle();//Emine
@@ -53,7 +52,7 @@ public class Kutuphane extends Kitap {
             case "5":
                 anaProgram();
                 break;
-            case "6":
+            case "0":
                 cikis();
                 break;
             default:
@@ -63,56 +62,31 @@ public class Kutuphane extends Kitap {
         }
     }
 
-    public static boolean mevcutKitaplarKontrol(String kitapAdi) {//Başka metodların kullanması için kitap adı ile kütüphaneden kitabın varlığı kontrol eder
-        boolean flag = false;
-        for (Kitap kitap : mevcutKitaplar) {
-            if (kitap.getKitapAdi().equalsIgnoreCase(kitapAdi)) {
-                odunc = kitap;
-                flag = true;
-                break;
-            }
-        }
-        return flag;//kütüphanede(mevcutlistte) olup olmadığını return eder
-    }
+    public static void kitapEkle() {//Emine
 
-    public static boolean oduncKitaplarListKontrol(String kitapAdi) {//Başka metodların kullanması için kitap adı ile ödunc alınıp alınmadığını kontrol eder
-        boolean flag2 = false;
-        for (Kitap each : oduncKitaplarList) {
-            if (each.getKitapAdi().equalsIgnoreCase(kitapAdi)) {
-                flag2 = true;
-                break;
-            }
-        }
-        return flag2;////odunclistte olup olmadığını return eder
-    }
-
-    static void kitapAra() {
-
-        System.out.println("Aradığınız kitabın ismini giriniz: ");
+        System.out.println("Kitabın ismini giriniz");
         String kitapAdi = input.nextLine();
 
-        if (mevcutKitaplarKontrol(kitapAdi)) {//aranan kitap mevcutlistte mi
-            System.out.println("Aranan Kitap: " + kitapAdi + " ismi ile kütüphanemizdedir");
-        } else if (oduncKitaplarListKontrol(kitapAdi)) {//aranan kitap odunclistte  mi
-            System.out.println("Kitap başkasına ödünc verildi.  " + kitapIadeTarihi + " tarihinde odunc alınabilir");
-        } else if (!oduncKitaplarListKontrol(kitapAdi)) {
-            System.out.println("Odunclistesinde kitap bulunamadı");
-        } else
-            System.out.println("Bu kitap kütüphanemize kayıtlı değildir.");
+        System.out.println("Kitabın yazarini giriniz");
+        String yazar = input.nextLine();
+
+        System.out.println("Kitabın yayinevini giriniz");
+        String yayinevi = input.nextLine();
+
+        System.out.println("Kitabın yayin tarihini giriniz");
+        String yayinTarihi = input.nextLine();
+
+        System.out.println("Kitabın isbn numarasını giriniz");
+        String isbn = input.nextLine();
+
+        System.out.println("Kitabın turunu giriniz");
+        String kitapTuru = input.nextLine();
+
+        mevcutKitaplar.add(new Kitap(kitapAdi, yazar, yayinevi, yayinTarihi, isbn, kitapTuru));
+        System.out.println("Kitap kütüphaneye başarıyla kaydedildi.");
     }
 
-    private static void katalogListele() {
-
-        System.out.println("*********KUTUPHANE KİTAP LİSTESİ*********\n");
-        System.out.printf("%-15s %-15s %-15s %-15s %-9s %s\n", "KİTAP İSMİ", "YAZAR", "YAYINEVİ", "YAYIN TARIHI", "ISBN NO", "TUR");
-        for (int i = 0; i < mevcutKitaplar.size(); i++) {
-            System.out.printf("%-15s %-15s %-15s %-15s %-9s %s\n", mevcutKitaplar.get(i).getKitapAdi(),
-                    mevcutKitaplar.get(i).getYazar(), mevcutKitaplar.get(i).getYayinevi(), mevcutKitaplar.get(i).getYayinTarihi(),
-                    mevcutKitaplar.get(i).getIsbn(), mevcutKitaplar.get(i).getKitapTuru());
-        }
-    }
-
-    private static void kitapSil() {//Kütüphaneden kitap siler
+    private static void kitapSil() {// Mustafa //Kütüphaneden kitap siler
         System.out.println("Silinecek kitabın isbn numarasını giriniz");
         String isbn = input.nextLine();
         boolean flag = false;
@@ -130,40 +104,61 @@ public class Kutuphane extends Kitap {
                 break;
             }
         }
-
         if (!silinecekKitaplar.isEmpty()) {//silinecekkitap list boş değilse
             mevcutKitaplar.removeAll(silinecekKitaplar);
-            System.out.println("Silmek istediğniz kitap: "+ silinecekKitaplar.get(0).getKitapAdi()+" kütüphaneden silindi");
+            System.out.println("Silmek istediğniz kitap: " + silinecekKitaplar.get(0).getKitapAdi() + " kütüphaneden silindi");
             silinecekKitaplar.clear();//silnecekkitap list temizlendi
         } else if (!flag) {//Eğer silenecek kitap mevcut ve odunc listte yoksa kütüphaneye kayıtlı değildir.
             System.out.println("Silmek istediğiniz kitap kütüphanemize kayıtlı değildir.");
         }
     }
 
-    public static void kitapEkle() {
+    private static void katalogListele() {//Mustafa
 
-        System.out.println("Kitabın ismini giriniz");
-        String kitapAdi = input.nextLine();
+        System.out.println("*********KUTUPHANE KİTAP LİSTESİ*********\n");
+        System.out.printf("%-15s %-15s %-15s %-15s %-9s %s\n", "KİTAP İSMİ", "YAZAR", "YAYINEVİ", "YAYIN TARIHI", "ISBN NO", "TUR");
+        for (int i = 0; i < mevcutKitaplar.size(); i++) {
 
-        System.out.println("Kitabın yazarini giriniz");
-        String yazar = input.nextLine();
+            System.out.printf("%-15s %-15s %-15s %-15s %-9s %s\n", mevcutKitaplar.get(i).getKitapAdi(),
+                    mevcutKitaplar.get(i).getYazar(), mevcutKitaplar.get(i).getYayinevi(), mevcutKitaplar.get(i).getYayinTarihi(),
+                    mevcutKitaplar.get(i).getIsbn(), mevcutKitaplar.get(i).getKitapTuru());
+        }
+    }
 
-        System.out.println("Kitabın yayinevini giriniz");
-        String yayinevi = input.nextLine();
+    static void kitapAra() {//Derya
 
-        System.out.println("Kitabın yayin tarihini giriniz");
-        String yayinTarihi = input.nextLine();
+        System.out.println("Aradığınız kitabın ismini giriniz: ");
+        String kitapAdi = new Scanner(System.in).nextLine();
 
-        System.out.println("Kitabın isbn numarasını giriniz");
-        String isbn = input.nextLine();
+        if (mevcutKitaplarKontrol(kitapAdi)) {//aranan kitap mevcutlistte mi
+            System.out.println("Aranan Kitap: " + kitapAdi + " ismi ile kütüphanemizdedir");
+        } else if (oduncKitaplarListKontrol(kitapAdi)) {//aranan kitap odunclistte  mi
+            System.out.println("Kitap başkasına ödünc verildi.  " + kitapIadeTarihi + " tarihinde odunc alınabilir");
+        } else
+            System.out.println("Bu kitap kütüphanemize kayıtlı değildir.");
+    }
 
+    public static boolean mevcutKitaplarKontrol(String kitapAdi) {//Başka metodların kullanması için kitap adı ile kütüphaneden kitabın varlığı kontrol eder
+        boolean flag = false;
+        for (Kitap kitap : mevcutKitaplar) {
+            if (kitap.getKitapAdi().equalsIgnoreCase(kitapAdi)) {
+                istenenKitap = kitap;
+                flag = true;
+                break;
+            }
+        }
+        return flag;//kütüphanede(mevcutlistte) olup olmadığını return eder
+    }
 
-        System.out.println("Kitabın turunu giriniz");
-        String kitapTuru = input.nextLine();
-
-        mevcutKitaplar.add(new Kitap(kitapAdi, yazar, yayinevi, yayinTarihi, isbn, kitapTuru));
-        System.out.println("Kitap kütüphaneye başarıyla kaydedildi.");
-
+    public static boolean oduncKitaplarListKontrol(String kitapAdi) {//Başka metodların kullanması için kitap adı ile ödunc alınıp alınmadığını kontrol eder
+        boolean flag2 = false;
+        for (Kitap each : oduncKitaplarList) {
+            if (each.getKitapAdi().equalsIgnoreCase(kitapAdi)) {
+                flag2 = true;
+                break;
+            }
+        }
+        return flag2;////odunclistte olup olmadığını return eder
     }
 
 

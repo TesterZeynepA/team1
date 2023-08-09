@@ -1,4 +1,4 @@
-Tabii ki! Java'da bildiklerinize uygun bir OOP projesi önerisiyle size yardımcı olabilirim. Önerilen proje bir basit bir kütüphane yönetim sistemi olacaktır. Bu projede birkaç temel sınıf oluşturacak ve bu sınıflar arasında kalıtım ilişkisi kuracaksınız. İşte adım adım ayrıntılarıyla projenin açıklaması:
+-----------------------------------------------KUTUPHANE PROJESI---------------------------------------------
 
 1. Sınıf Tasarımı:
    - Kitap (Book) Sınıfı:
@@ -7,16 +7,15 @@ Tabii ki! Java'da bildiklerinize uygun bir OOP projesi önerisiyle size yardımc
      - Metotlar: Getter ve Setter metotları ile kitap özelliklerine erişim sağlayın.
 
    - Kütüphane (Library) Sınıfı:
-     - Özellikler: katalog (Kitapları saklamak için ArrayList).
+     - Özellikler: Kitapları saklamak için mevcutKitapList.
      - Metotlar:
        - Kitap eklemek için bir "kitapEkle" metodu.
        - Kitap silmek için bir "kitapSil" metodu.
-       - Katalogdaki tüm kitapları listelemek için bir "katalogListele" metodu.
-       - Bir kitabın katalogda olup olmadığını kontrol etmek için bir "kitapVarMi" metodu.
+       - Kütüphanedeki tüm kitapları listelemek için bir "kitapListele" metodu.
        - Belirli bir kitabı aramak için bir "kitapAra" metodu.
 
    - Öğrenci (Student) Sınıfı:
-     - Özellikler: ogrenciAdi, ogrenciNo.
+     - Özellikler: ogrenciAdi, ogrenciNo,OdunckitaplarLİst.
      - Metotlar: Getter ve Setter metotları ile öğrenci özelliklerine erişim sağlayın.
 
 2. Kalıtım İlişkileri:
@@ -29,15 +28,15 @@ Tabii ki! Java'da bildiklerinize uygun bir OOP projesi önerisiyle size yardımc
    - Kitap sınıfını oluşturun ve yukarıda bahsedilen özellikleri ekleyin.
 
    Adım 2: Kütüphane Sınıfı Oluşturma
-   - Kütüphane sınıfını oluşturun ve katalog adı ve kitapları saklamak için bir ArrayList olan katalog özelliğini ekleyin.
+   - Kütüphane sınıfını oluşturun  ve kitapları saklamak için bir ArrayList bulunur.
    - Kitap eklemek, silmek, listelemek, aramak ve var olup olmadığını kontrol etmek için gerekli metotları ekleyin.
 
    Adım 3: Öğrenci Sınıfı Oluşturma
    - Öğrenci sınıfını oluşturun ve öğrenci adı ve öğrenci numarası gibi özellikleri ekleyin.
 
    Adım 4: Ana Program (Main) Oluşturma
-   - Ana programda, kullanıcıya kitap eklemek, silmek, listelemek, kitap aramak ve öğrenci eklemek gibi seçenekleri sunan bir menü oluşturun.
-   - Menü seçeneklerini kullanıcı girişi ve döngülerle işleyin. Kullanıcı girişine göre ilgili sınıf ve metotları çağırarak kütüphane işlemlerini gerçekleştirin.
+   - Ana programda, kullanıcı girişine göre Öğrenci işlemleri ve Kütüphane işlemlerine yönledirilir.
+   - Menü seçeneklerini kullanıcı girişi ve döngülerle işleyin.
+   - Öğrenci işlemlerinde ,öğrenci eklemek, kitap ödünç almak,kitap iade etmek, ödünç kitapları listelemek ve kitap aramak gibi seçenekleri sunan bir menü oluşturun.
+   - Kullanıcı girişine göre ilgili sınıf ve metotları çağırarak kütüphane işlemlerini gerçekleştirin.
    - try-catch yapısını kullanarak hatalı girişlere karşı programın çökmesini önleyin ve kullanıcıya uygun mesajlar verin.
-
-Projenin amacı, kullanıcıların kütüphaneye kitap ekleyebileceği, silinebileceği ve listelenebileceği basit bir kütüphane yönetim sistemi oluşturmaktır. Bu proje, Java OOP kavramlarını daha iyi anlamanıza ve uygulamanıza yardımcı olacaktır. Ayrıca, geliştirmeye açık bir projedir, dolayısıyla ilerleyen aşamalarda ek fonksiyonlar ve özellikler ekleyerek daha karmaşık bir yapı oluşturabilirsiniz.
